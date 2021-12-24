@@ -54,8 +54,7 @@ spring-boot-2-api 可用于后端单应用及多应用的 **API 接口开发框�
 ├── edu-db        -- 数据库操作代码(可使用MybatisCodeHelperPro)
 ├── edu-security  -- SpringSecurity封装的公用模块
 ├── edu-portal    -- 前台系统接口
-├── edu-admin     -- 后台系统接口
-└── edu-live      -- 直播系统接口
+└── edu-admin     -- 后台系统接口
 ```
 
 
@@ -191,9 +190,8 @@ mvnw clean package  -Dmaven.test.skip=true
 
 控制台运行 jar 包
 ```shell
-java -jar edu-admin/target/edu-admin-x.x.x.jar --server.port=8512
-java -jar edu-portal/target/edu-portal-x.x.x.jar --server.port=8522
-java -jar edu-portal/target/edu-live-x.x.x.jar --server.port=8932
+java -jar edu-portal/target/edu-portal-x.x.x.jar --server.port=8001
+java -jar edu-admin/target/edu-admin-x.x.x.jar --server.port=8002
 ```
 > 只要控制台关闭，服务就不能访问了
 
@@ -225,10 +223,6 @@ cd edu-admin
 ..\mvnw dockerfile:push
 
 cd edu-portal
-..\mvnw dockerfile:build
-..\mvnw dockerfile:push
-
-cd edu-live
 ..\mvnw dockerfile:build
 ..\mvnw dockerfile:push
 ```
