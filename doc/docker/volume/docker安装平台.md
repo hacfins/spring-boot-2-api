@@ -129,28 +129,11 @@ sed -i "s/192.168.123.22/192.168.123.110/g" `grep 192.168.123.22 -rl /mnt/volume
 
 
 
-## 2.2 拉取镜像
+## docker打包
 
-登录阿里云 Docker Registry，密码为 xxx
+docker 打包并发布到仓库，可以使用私有仓库，也可以使用阿里云等第三方仓库。
 
-```bash
-docker login --username=hacfin registry.cn-hangzhou.aliyuncs.com
-```
-
-
-
-拉取镜像（可以不执行）
-
-```bash
-#web服务
-docker pull registry.cn-hangzhou.aliyuncs.com/hacfin-edu/edu-api-admin:1.8.4
-docker pull registry.cn-hangzhou.aliyuncs.com/hacfin-edu/edu-api-portal:1.8.1
-
-#第三方服务
-docker pull mysql:8.0.25
-docker pull redis:5.0.12
-```
-
+[docker 打包参考资料](https://mp.weixin.qq.com/s/3X6vVdWmjmWCyiLm35jpVw)
 
 
 ## 安装依赖服务

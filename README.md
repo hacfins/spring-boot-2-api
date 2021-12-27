@@ -50,9 +50,9 @@ spring-boot-2-api 可用于后端单应用及多应用的 **API 接口开发框�
 ## 模块
 
 ```
-├── edu-common    -- 工具类及通用代码
-├── edu-db        -- 数据库操作代码(可使用MybatisCodeHelperPro)
-├── edu-security  -- SpringSecurity封装的公用模块
+├── edu-common        -- 工具类及通用代码
+├── edu-db            -- 数据库操作代码(可使用MybatisCodeHelperPro)
+├── edu-security      -- SpringSecurity封装的公用模块
 ├── edu-api-portal    -- 前台系统接口
 └── edu-api-admin     -- 后台系统接口
 ```
@@ -174,9 +174,10 @@ spring-boot-2-api 可用于后端单应用及多应用的 **API 接口开发框�
 
 > 更新的最佳实践原则是：如果需要使用模型事件，那么就先查询后更新
 
+## 依赖环境安装
+需要安装 MySQL、Redis，并导入 doc/sql/ 目录下的 SQL 文件到MySQL数据中
 
-
-## 打包与发布
+## 打包与运行
 
 ### 打包
 
@@ -190,8 +191,8 @@ mvnw clean package  -Dmaven.test.skip=true
 
 控制台运行 jar 包
 ```shell
-java -jar edu-portal/target/edu-api-portal-x.x.x.jar --server.port=8001
-java -jar edu-admin/target/edu-api-admin-x.x.x.jar --server.port=8002
+java -jar edu-api-portal/target/edu-api-portal-x.x.x.jar --server.port=8001
+java -jar edu-api-admin/target/edu-api-admin-x.x.x.jar --server.port=8002
 ```
 > 只要控制台关闭，服务就不能访问了
 
@@ -215,7 +216,11 @@ java -Xms10m -Xmx80m -jar xxx.jar &
 
 
 
-### docker 发布
+### docker 打包与发布
+需要修改 edu-api-portal/pom.xml 与 edu-api-admin/pom.xml 文件
+安装时，可以参考 doc/docker/volume/ 目录下的文件
+
+[docker 打包参考资料](https://mp.weixin.qq.com/s/3X6vVdWmjmWCyiLm35jpVw)
 
 ```shell
 cd edu-admin 
