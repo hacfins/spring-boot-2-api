@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>edu-db</artifactId>
+    <version>1.3.0</version>
+    <packaging>jar</packaging>
+
+    <parent>
+        <artifactId>edu</artifactId>
+        <groupId>com.langyastudio.edu</groupId>
+        <version>1.3.0</version>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.langyastudio.edu</groupId>
+            <artifactId>edu-common</artifactId>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+
+    <!--<build>
+        <plugins>
+            <plugin>
+                <groupId>cn.smallbun.screw</groupId>
+                <artifactId>screw-maven-plugin</artifactId>
+                <version>1.0.5</version>
+                <dependencies>
+                    &lt;!&ndash; HikariCP &ndash;&gt;
+                    <dependency>
+                        <groupId>com.zaxxer</groupId>
+                        <artifactId>HikariCP</artifactId>
+                        <version>3.4.5</version>
+                    </dependency>
+                    &lt;!&ndash;mysql driver&ndash;&gt;
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>8.0.20</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    &lt;!&ndash;username&ndash;&gt;
+                    <username>root</username>
+                    &lt;!&ndash;password&ndash;&gt;
+                    <password>Hacfin_Mysql8</password>
+                    &lt;!&ndash;driver&ndash;&gt;
+                    <driverClassName>com.mysql.cj.jdbc.Driver</driverClassName>
+                    &lt;!&ndash;jdbc url&ndash;&gt;
+                    <jdbcUrl>jdbc:mysql://192.168.123.22:3306/edu_account</jdbcUrl>
+                    &lt;!&ndash;生成文件类型&ndash;&gt;
+                    <fileType>WORD</fileType>
+                    &lt;!&ndash;打开文件输出目录&ndash;&gt;
+                    <openOutputDir>false</openOutputDir>
+                    &lt;!&ndash;生成模板&ndash;&gt;
+                    <produceType>freemarker</produceType>
+                    &lt;!&ndash;文档名称 为空时:将采用[数据库名称-描述-版本号]作为文档名称&ndash;&gt;
+                    <fileName>edu-account-db-1.x</fileName>
+                    &lt;!&ndash;描述&ndash;&gt;
+                    <description>数据库文档</description>
+                    &lt;!&ndash;版本&ndash;&gt;
+                    <version>${project.version}</version>
+                    &lt;!&ndash;标题&ndash;&gt;
+                    <title>数据库文档</title>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>-->
+</project>

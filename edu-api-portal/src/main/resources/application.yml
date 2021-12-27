@@ -1,0 +1,260 @@
+langyastudio:
+  storage:
+    root: /mnt/volume/oss/
+    imgs:
+      #存储类型
+      # local - 本地
+      # aliyun - 阿里云
+      type: local
+      root: ${langyastudio.storage.root}portal_imgs/
+      #只有在windows运行时才生效
+      #use for test on windows OS
+      win-root: D:/volume/edu/portal_imgs/
+
+
+jwt:
+  # JWT存储的请求头
+  tokenHeader: Authorization
+  # JWT加解密使用的密钥
+  secret: edu-admin-secret
+  # JWT的超期限时间(60*60*24*7)
+  expiration: 604800
+  # JWT负载中拿到开头
+  tokenHead: 'Edu '
+
+server:
+  # 服务端口
+  port: ${APP_PORT:8001}
+  # 错误页，指定发生错误时，跳转的URL
+  error:
+    path: /error
+  # 该服务绑定IP地址，启动服务器时如本机不是该IP地址则抛出异常启动失败，只有特殊需求的情况下才配置
+  # address=192.168.0.6
+  servlet:
+    # spring 2.x 中文乱码
+    encoding:
+      charset: UTF-8
+      force: true
+      enabled: true
+    # session
+    session:
+      cookie:
+        # 浏览器脚本将无法访问cookie
+        http-only: true
+      timeout: 31d
+
+  # 48K
+  max-http-header-size: 49152
+
+  tomcat:
+    # tomcat 最大线程数，默认为200
+    threads:
+      max: 2000
+    max-http-form-post-size: 20MB
+    # tomcat的URI编码
+    uri-encoding: UTF-8
+    # 存放Tomcat的日志、Dump等文件的临时文件夹，默认为系统的tmp文件夹
+    basedir: /tmp/log
+
+    # 打开Tomcat的Access日志，并可以设置日志格式
+    #access-log-enabled: true
+    #access-log-pattern:
+    # accesslog目录，默认在basedir/logs
+    #accesslog.directory=
+
+spring:
+  main:
+    allow-circular-references: true
+
+  application:
+    name: edu-portal
+
+  profiles:
+    active: dev
+
+  datasource:
+    url: jdbc:mysql://192.168.123.22:3306/edu_account
+    username: root
+    password: Hacfin_Mysql8
+    driver-class-name: com.mysql.jdbc.Driver
+    druid:
+      initial-size: 10
+      max-active: 20
+      min-idle: 1
+      max-wait: 6000
+      #pool-prepared-statements:
+      #max-pool-prepared-statement-per-connection-size:
+      validation-query: SELECT 1
+      #validation-query-timeout:
+      test-on-borrow: false
+      test-on-return: false
+      test-while-idle: true
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      #max-evictable-idle-time-millis:
+      filters: wall
+
+  session:
+    store-type: redis
+    redis:
+      flush-mode: immediate
+      namespace: "a:"
+
+  redis:
+    host: 192.168.123.22
+    port: 6379
+    password: Hacfin_Redis8
+    timeout: 6000ms
+    lettuce:
+      pool:
+        # 最大连接数
+        max-active: 10
+        # 最大阻塞等待时间(负数表示没限制)
+        max-wait: 10000ms
+        # 最大空闲
+        max-idle: 10
+        # 最小空闲
+        min-idle: 0
+      #cluster:       # 集群配置
+      #nodes: 127.0.0.1:6381,127.0.0.1:6382,127.0.0.1:6383,127.0.0.1:6384,127.0.0.1:6385,127.0.0.1:6386
+      #max-redirects: 2  # 最大重定向次数
+
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+  mail:
+    host: smtp.exmail.qq.com
+    username: xxx
+    password: xxx
+    default-encoding: UTF-8
+    # 自定义
+    fromMail:
+      addr: xxx
+      user: xxx
+      copy_right: Copyright © 2005-2020 xxx
+
+  servlet:
+    # 开启文件上传
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+      enabled: true
+
+  devtools:
+    livereload:
+      port: 35739
+
+mybatis:
+  config-location: classpath:mybatis-config.xml
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    auto-mapping-behavior: partial
+    # 开启驼峰命名
+    map-underscore-to-camel-case: true
+
+mybatis-plus:
+  global-config:
+    db-config:
+      id-type: auto
+      # 表名前缀
+      table-prefix:
+
+  configuration:
+    auto-mapping-behavior: partial
+    map-underscore-to-camel-case: true
+
+secure:
+  ignored:
+    # 安全路径白名单
+    # * 与 ** 有区别
+    urls:
+      - /**
+
+
+#actuator
+info:
+  name: edu-api-portal
+  version: 1.0.1
+  maintainer: langyastudio
+management:
+  health:
+    mail:
+      #禁用mail检查
+      enabled: false
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        #health, info
+        include: health, info, beans, env, conditions, httptrace, configprops, threaddump, loggers, mappings, metrics
+
+      #修改访问地址
+      #base-path: /monitor
+      #path-mapping:
+      #  health: check-health
+
+
+# 第三方授权登录
+oauth:
+  # 是否支持
+  enabled: true
+  # 服务商{providerId}
+  provider:
+    weixin:
+      # 根据是否有设置 clientId 来动态加载相应 JustAuth 的 AuthXxxRequest
+      client-id: xxxx
+      client-secret: xxxx
+    dingding:
+      client-id: xxxx
+      client-secret: xxxx
+  # 授权登录 url 前缀
+  auth-login-url-prefix: /auth2/authorization
+  # 回调处理 url 前缀{RedirectUrl}
+  redirect-url-prefix: /portal/auth2/callback
+  # 回调的域名
+  # redirectUrl 直接由 {domain}/{servletContextPath}/{redirectUrlPrefix}/{providerId}组成
+  domain: http://192.168.123.100:8001
+
+#第三方服务
+aliyun:
+  oss:
+    access-key: xxxx
+    access-secret: xxxx
+    # oss对外服务的访问域名
+    end-point: oss-cn-hangzhou.aliyuncs.com
+    #oss的存储空间
+    bucket-name: edu-imgs-langyastudio
+    dir-prefix: account/
+    # 上传文件大小(M)
+    max-size: 10
+    # 签名有效期(S)
+    policy-expire: 300
+    # 文件上传成功后的回调地址
+    callback:
+
+  sms:
+    access-key: xxxx
+    access-secret: xxxx
+
+    #user register
+    register:
+      signName: 播谷
+      templateCode: SMS_139242531
+
+    #verify login
+    login:
+      signName: 播谷
+      templateCode: SMS_187942568
+
+    #find pwd
+    find-pwd:
+      signName: 播谷
+      templateCode: SMS_139232526
+
+    #modify phone
+    modify-phone:
+      signName: 播谷
+      templateCode: SMS_139237573

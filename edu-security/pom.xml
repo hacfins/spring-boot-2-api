@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>edu-security</artifactId>
+    <version>1.3.0</version>
+    <packaging>jar</packaging>
+    <name>edu-security</name>
+    <description>edu-security project for edu</description>
+
+    <parent>
+        <groupId>com.langyastudio.edu</groupId>
+        <artifactId>edu</artifactId>
+        <version>1.3.0</version>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.langyastudio.edu</groupId>
+            <artifactId>edu-common</artifactId>
+        </dependency>
+
+        <!--spring security-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <!--oauth-->
+        <dependency>
+            <groupId>me.zhyd.oauth</groupId>
+            <artifactId>JustAuth</artifactId>
+        </dependency>
+        <!--jwt-->
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+        </dependency>
+
+    </dependencies>
+</project>

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.langyastudio.edu.db.mapper.UmsRoleMapper">
+    <resultMap id="BaseResultMap" type="com.langyastudio.edu.db.model.UmsRole">
+        <!--@mbg.generated-->
+        <!--@Table ums_role-->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="role_id" jdbcType="CHAR" property="roleId"/>
+        <result column="role_name" jdbcType="VARCHAR" property="roleName"/>
+        <result column="view_system" jdbcType="TINYINT" property="viewSystem"/>
+        <result column="view_school" jdbcType="TINYINT" property="viewSchool"/>
+        <result column="is_system" jdbcType="TINYINT" property="isSystem"/>
+        <result column="role_type" jdbcType="TINYINT" property="roleType"/>
+        <result column="sort" jdbcType="SMALLINT" property="sort"/>
+        <result column="description" jdbcType="VARCHAR" property="description"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="delete_time" jdbcType="TIMESTAMP" property="deleteTime"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, role_id, role_name, view_system, view_school, is_system, role_type, sort, description,
+        update_time, delete_time, create_time
+    </sql>
+
+    <insert id="insertRole" keyColumn="id" keyProperty="id" parameterType="com.langyastudio.edu.db.model.UmsRole"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into ums_role
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="roleId != null">
+                role_id,
+            </if>
+            <if test="roleName != null">
+                role_name,
+            </if>
+            <if test="viewSystem != null">
+                view_system,
+            </if>
+            <if test="viewSchool != null">
+                view_school,
+            </if>
+            <if test="isSystem != null">
+                is_system,
+            </if>
+            <if test="roleType != null">
+                role_type,
+            </if>
+            <if test="sort != null">
+                sort,
+            </if>
+            <if test="description != null">
+                description,
+            </if>
+            update_time,
+            <if test="deleteTime != null">
+                delete_time,
+            </if>
+            create_time,
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="roleId != null">
+                #{roleId,jdbcType=CHAR},
+            </if>
+            <if test="roleName != null">
+                #{roleName,jdbcType=VARCHAR},
+            </if>
+            <if test="viewSystem != null">
+                #{viewSystem,jdbcType=TINYINT},
+            </if>
+            <if test="viewSchool != null">
+                #{viewSchool,jdbcType=TINYINT},
+            </if>
+            <if test="isSystem != null">
+                #{isSystem,jdbcType=TINYINT},
+            </if>
+            <if test="roleType != null">
+                #{roleType,jdbcType=TINYINT},
+            </if>
+            <if test="sort != null">
+                #{sort,jdbcType=SMALLINT},
+            </if>
+            <if test="description != null">
+                #{description,jdbcType=VARCHAR},
+            </if>
+            #{updateTime,jdbcType=TIMESTAMP},
+            <if test="deleteTime != null">
+                #{deleteTime,jdbcType=TIMESTAMP},
+            </if>
+            #{createTime,jdbcType=TIMESTAMP},
+        </trim>
+    </insert>
+
+    <update id="updateRoleByRoleId" parameterType="com.langyastudio.edu.db.model.UmsRole">
+        <!--@mbg.generated-->
+        update ums_role
+        <set>
+            <if test="roleName != null">
+                role_name = #{roleName,jdbcType=VARCHAR},
+            </if>
+            <if test="viewSystem != null">
+                view_system = #{viewSystem,jdbcType=TINYINT},
+            </if>
+            <if test="viewSchool != null">
+                view_school = #{viewSchool,jdbcType=TINYINT},
+            </if>
+            <if test="isSystem != null">
+                is_system = #{isSystem,jdbcType=TINYINT},
+            </if>
+            <if test="roleType != null">
+                role_type = #{roleType,jdbcType=TINYINT},
+            </if>
+            <if test="sort != null">
+                sort = #{sort,jdbcType=SMALLINT},
+            </if>
+            <if test="description != null">
+                description = #{description,jdbcType=VARCHAR},
+            </if>
+            update_time = #{updateTime,jdbcType=TIMESTAMP},
+        </set>
+        where role_id = #{roleId,jdbcType=INTEGER}
+    </update>
+
+    <!--auto generated by MybatisCodeHelper on 2021-04-20-->
+    <select id="getInfoByRoleId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from ums_role
+        where role_id = #{roleId,jdbcType=CHAR}
+          and delete_time is null
+        limit 1
+    </select>
+
+    <!--auto generated by MybatisCodeHelper on 2021-04-20-->
+    <select id="getRoleIdList" resultType="String">
+        select role_id
+        from ums_role
+        <where>
+            <if test="isSystem != null">
+                and is_system = #{isSystem,jdbcType=TINYINT}
+            </if>
+            <if test="true">
+                and delete_time is null
+            </if>
+        </where>
+        order by sort
+        <if test="isAsc != null and isAsc == 2">
+            DESC
+        </if>
+    </select>
+
+    <!--auto generated by MybatisCodeHelper on 2021-04-20-->
+    <select id="existByRoleName" resultType="String">
+        select role_id
+        from ums_role
+        <where>
+            <if test="roleName != null">
+                and role_name = #{roleName,jdbcType=TINYINT}
+            </if>
+            <if test="roleId != null">
+                and role_id != #{roleId,jdbcType=CHAR}
+            </if>
+            <if test="true">
+                and delete_time is null
+            </if>
+            limit 1
+        </where>
+    </select>
+
+    <!--auto generated by MybatisCodeHelper on 2021-04-20-->
+    <delete id="deleteByRoleId">
+        update ums_role
+        set delete_time = now()
+        where role_id = #{roleId,jdbcType=CHAR}
+    </delete>
+</mapper>

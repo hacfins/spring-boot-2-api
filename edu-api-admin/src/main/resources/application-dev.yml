@@ -1,0 +1,4 @@
+spring:
+  application:
+    version: @project.version@
+    package-time: @package-time@

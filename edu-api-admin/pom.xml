@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>edu-api-admin</artifactId>
+    <version>${revision}</version>
+    <packaging>jar</packaging>
+    <name>edu-admin</name>
+    <description>edu-admin project for edu</description>
+
+    <parent>
+        <groupId>com.langyastudio.edu</groupId>
+        <artifactId>edu</artifactId>
+        <version>1.3.0</version>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.langyastudio.edu</groupId>
+            <artifactId>edu-security</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.langyastudio.edu</groupId>
+            <artifactId>edu-db</artifactId>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+
+                    <!-- 如果没有该配置，devtools不会生效 -->
+                    <fork>true</fork>
+
+                    <!--jar可直接运行-->
+                    <executable>true</executable>
+                </configuration>
+            </plugin>
+
+            <!--docker 打包-->
+            <!--需要本地tcp://localhost:2375中转-->
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>dockerfile-maven-plugin</artifactId>
+                <version>${dockerfile.maven.plugin.version}</version>
+
+                <!--放开这块注释，则运行mvn deploy命令就会打包镜像-->
+                <!--<executions>
+                    <execution>
+                        <id>default</id>
+                        <goals>
+                            <goal>build</goal>
+                            <goal>push</goal>
+                        </goals>
+                    </execution>
+                </executions>-->
+
+                <configuration>
+                    <username>xxx</username>
+                    <password>xxx</password>
+                    <repository>${docker.host}/hacfin-edu/${project.artifactId}</repository>
+                    <tag>${project.version}</tag>
+                    <buildArgs>
+                        <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
+                    </buildArgs>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
