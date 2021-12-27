@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    <!--https://mybatis.org/mybatis-3/zh/configuration.html#-->
+    <settings>
+        <!-- 全局性地开启或关闭所有映射器配置文件中已配置的任何缓存 -->
+        <setting name="cacheEnabled" value="true"/>
+
+        <!--完成一次查询就会清除缓存-->
+        <!--默认是SESSION，也就是开启一级缓存-->
+        <!--<setting name="localCacheScope" value="Statement"/>-->
+
+        <!-- 当开启时，所有关联对象都会延迟加载。 特定关联关系中可通过设置 fetchType 属性来覆盖该项的开关状态 -->
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <!-- 开启时，任一方法的调用都会加载该对象的所有延迟加载属性。 否则，每个延迟加载属性会按需加载 -->
+        <setting name="aggressiveLazyLoading" value="true"/>
+        <!-- 允许 JDBC 支持自动生成主键，需要数据库驱动支持。如果设置为 true，将强制使用自动生成主键 -->
+        <setting name="useGeneratedKeys" value="false"/>
+
+        <!-- 指定 MyBatis 应如何自动映射列到字段或属性。 NONE 表示关闭自动映射；
+            PARTIAL 只会自动映射没有定义嵌套结果映射的字段。 FULL 会自动映射任何复杂的结果集（无论是否嵌套） -->
+        <setting name="autoMappingBehavior" value="PARTIAL"/>
+        <!-- 指定发现自动映射目标未知列（或未知属性类型）的行为。
+             NONE: 不做任何反应
+             WARNING: 输出警告日志（'org.apache.ibatis.session.AutoMappingUnknownColumnBehavior' 的日志等级必须设置为 WARN）
+             FAILING: 映射失败 (抛出 SqlSessionException)-->
+        <setting name="autoMappingUnknownColumnBehavior" value="NONE"/>
+        <!-- 从SQL中删除多余的空格字符。请注意，这也会影响SQL中的文字字符串。 -->
+        <setting name="shrinkWhitespacesInSql" value="true"/>
+
+        <!-- 配置默认的执行器。SIMPLE 就是普通的执行器；REUSE 执行器会重用预处理语句（PreparedStatement）； BATCH 执行器不仅重用语句还会执行批量更新。 -->
+        <setting name="defaultExecutorType" value="BATCH"/>
+        <!-- 使用驼峰命名法转换字段。 -->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <!-- 当返回行的所有列都是空时，MyBatis默认返回 null。 当开启这个设置时，MyBatis会返回一个空实例。
+             请注意，它也适用于嵌套的结果集（如集合或关联）。（新增于 3.4.2）-->
+        <setting name="returnInstanceForEmptyRow" value="true"/>
+        <!-- 指定当结果集中值为 null 的时候是否调用映射对象的 setter（map 对象时为 put）方法，
+             依赖于 Map.keySet() 或 null值进行初始化时比较有用。注意基本类型（int、boolean 等）是不能设置成 null 的。-->
+        <setting name="callSettersOnNulls" value="true"/>
+
+        <!-- 指定 MyBatis 增加到日志名称的前缀。-->
+        <setting name="logPrefix" value="batis-log-"/>
+        <!-- 指定 MyBatis 所用日志的具体实现，未指定时将自动查找-->
+        <setting name="logImpl" value="LOG4J2"/>
+
+    </settings>
+
+</configuration>
