@@ -1,0 +1,108 @@
+version: '3.5'
+
+services:
+  edu-api-portal:
+    image: edu-api-portal:1.8.1
+    container_name: edu-api-portal
+    #command:
+    restart: always
+    networks:
+      volume_edu-net:
+        ipv4_address: 172.28.0.11
+    environment:
+      - 'TZ="Asia/Shanghai"'
+    ports:
+      - 8511:8511
+    #容器的/etc/hosts
+    #extra_hosts:
+    #  - "account-test.bogo365.net:172.28.0.21"
+    volumes:
+      - /mnt/volume/oss:/mnt/volume/oss
+      - /mnt/volume/api_portal/application.yml:/application.yml
+      - /mnt/volume/api_portal/logs:/var/logs
+      - /etc/localtime:/etc/localtime
+    # /etc/sysctl.conf
+    sysctls:
+      ####aliyun
+      # see details in https://help.aliyun.com/knowledge_detail/39428.html
+      net.ipv4.conf.default.rp_filter: 0
+      net.ipv4.conf.all.rp_filter: 0
+      net.ipv4.conf.eth0.rp_filter: 0
+      net.ipv4.conf.default.arp_announce: 2
+      net.ipv4.conf.all.arp_announce: 2
+      # see details in https://help.aliyun.com/knowledge_detail/41334.html
+      net.ipv4.tcp_synack_retries: 2
+      net.ipv4.tcp_fin_timeout: 60
+      net.ipv6.conf.all.disable_ipv6: 1
+      net.ipv6.conf.default.disable_ipv6: 1
+      net.ipv6.conf.lo.disable_ipv6: 1
+      # 时间戳可以避免序列号的卷绕。一个 1Gbps 的链路肯定会遇到以前用过的序列号。时间戳能够让内核接受这种“异常” 的数据包。这里需要将其关掉
+      net.ipv4.tcp_timestamps: 0
+      #该参数设置系统的 TIME_WAIT 的数量，如果超过默认值则会被立即清除
+      net.ipv4.tcp_max_tw_buckets: 20000
+      #定义了系统中每一个端口最大的监听队列的长度，这是个全局的参数
+      net.core.somaxconn: 65535
+      #对于还未获得对方确认的连接请求，可保存在队列中的最大数目
+      net.ipv4.tcp_max_syn_backlog: 262144
+      #防火墙跟踪表的大小。注意：如果防火墙没开则会提示error: "net.netfilter.nf_conntrack_max" is an unknown key，忽略即可
+      net.netfilter.nf_conntrack_max: 2621440
+    # /etc/security/limits.conf
+    ulimits:
+      core: 655350
+      nproc: 655350
+      nofile: 655350
+
+
+  edu-api-admin:
+    image: edu-api-admin:1.8.1
+    container_name: edu-api-admin
+    #command:
+    restart: always
+    networks:
+      volume_edu-net:
+        ipv4_address: 172.28.0.21
+    environment:
+      - 'TZ="Asia/Shanghai"'
+    ports:
+      - 8521:8521
+    volumes:
+      - /mnt/volume/oss:/mnt/volume/oss
+      - /mnt/volume/api_admin/application.yml:/application.yml
+      - /mnt/volume/api_admin/logs:/var/logs
+      - /etc/localtime:/etc/localtime
+    # /etc/sysctl.conf
+    sysctls:
+      ####aliyun
+      # see details in https://help.aliyun.com/knowledge_detail/39428.html
+      net.ipv4.conf.default.rp_filter: 0
+      net.ipv4.conf.all.rp_filter: 0
+      net.ipv4.conf.eth0.rp_filter: 0
+      net.ipv4.conf.default.arp_announce: 2
+      net.ipv4.conf.all.arp_announce: 2
+      # see details in https://help.aliyun.com/knowledge_detail/41334.html
+      net.ipv4.tcp_synack_retries: 2
+      net.ipv4.tcp_fin_timeout: 60
+      net.ipv6.conf.all.disable_ipv6: 1
+      net.ipv6.conf.default.disable_ipv6: 1
+      net.ipv6.conf.lo.disable_ipv6: 1
+      # 时间戳可以避免序列号的卷绕。一个 1Gbps 的链路肯定会遇到以前用过的序列号。时间戳能够让内核接受这种“异常” 的数据包。这里需要将其关掉
+      net.ipv4.tcp_timestamps: 0
+      #该参数设置系统的 TIME_WAIT 的数量，如果超过默认值则会被立即清除
+      net.ipv4.tcp_max_tw_buckets: 20000
+      #定义了系统中每一个端口最大的监听队列的长度，这是个全局的参数
+      net.core.somaxconn: 65535
+      #对于还未获得对方确认的连接请求，可保存在队列中的最大数目
+      net.ipv4.tcp_max_syn_backlog: 262144
+      #防火墙跟踪表的大小。注意：如果防火墙没开则会提示error: "net.netfilter.nf_conntrack_max" is an unknown key，忽略即可
+      net.netfilter.nf_conntrack_max: 2621440
+    # /etc/security/limits.conf
+    ulimits:
+      core: 655350
+      nproc: 655350
+      nofile: 655350
+
+
+
+networks:
+  volume_edu-net:
+    external: true

@@ -46,11 +46,11 @@
                     &lt;!&ndash;username&ndash;&gt;
                     <username>root</username>
                     &lt;!&ndash;password&ndash;&gt;
-                    <password>Hacfin_Mysql8</password>
+                    <password>testMysql</password>
                     &lt;!&ndash;driver&ndash;&gt;
                     <driverClassName>com.mysql.cj.jdbc.Driver</driverClassName>
                     &lt;!&ndash;jdbc url&ndash;&gt;
-                    <jdbcUrl>jdbc:mysql://192.168.123.22:3306/edu_account</jdbcUrl>
+                    <jdbcUrl>jdbc:mysql://192.168.123.22:3306/test_edu</jdbcUrl>
                     &lt;!&ndash;生成文件类型&ndash;&gt;
                     <fileType>WORD</fileType>
                     &lt;!&ndash;打开文件输出目录&ndash;&gt;
