@@ -76,7 +76,7 @@ spring:
     active: dev
 
   datasource:
-    url: jdbc:mysql://192.168.123.22:3306/test_edu
+    url: jdbc:mysql://192.168.123.22:3306/test_edu?jdbcCompliantTruncation=false
     username: root
     password: testMysql
     driver-class-name: com.mysql.jdbc.Driver
