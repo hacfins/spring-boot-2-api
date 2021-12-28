@@ -28,7 +28,7 @@ import java.util.*;
 @Log4j2
 public class BaseServiceImpl implements BaseService
 {
-    static final String CACHE_PRE = "edu_baseservice:";
+    static final String CACHE_PRE = "test_edu_baseservice:";
 
     @Autowired
     PasswordEncoder passwordEncoder;

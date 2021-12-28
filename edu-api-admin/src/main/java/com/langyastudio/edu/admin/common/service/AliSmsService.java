@@ -19,7 +19,7 @@ import java.util.Map;
 @Component
 public class AliSmsService
 {
-    final static String CACHE_PRE = "edu_sms:";
+    final static String CACHE_PRE = "test_edu_sms:";
 
     @Autowired
     AliSmsConf aliSmsConf;

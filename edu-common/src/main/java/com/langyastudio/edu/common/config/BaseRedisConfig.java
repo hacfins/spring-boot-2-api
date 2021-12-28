@@ -33,7 +33,7 @@ import java.util.Map;
 @AutoConfigureAfter(RedisAutoConfiguration.class)
 public class BaseRedisConfig extends CachingConfigurerSupport
 {
-    public final static String _PREFIX = "edu_";
+    public final static String _PREFIX = "test_edu_";
 
     /**
      * redis template相关配置

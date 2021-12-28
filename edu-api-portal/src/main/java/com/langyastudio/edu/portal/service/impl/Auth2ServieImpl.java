@@ -40,9 +40,9 @@ import java.util.*;
 @Service
 public class Auth2ServieImpl extends BaseServiceImpl implements Auth2Service
 {
-    private final static String CACHE_KEY          = "edu_auth2:key_";
-    private final static String CACHE_TICKET_JSAPI = "edu_auth2:ticket_jsapi_";
-    private final static String CACHE_ACCESS_TOKEN = "edu_auth2:access_token_";
+    private final static String CACHE_KEY          = "test_edu_auth2:key_";
+    private final static String CACHE_TICKET_JSAPI = "test_edu_auth2:ticket_jsapi_";
+    private final static String CACHE_ACCESS_TOKEN = "test_edu_auth2:access_token_";
 
     @Value("${jwt.tokenHead}")
     private String tokenHead;

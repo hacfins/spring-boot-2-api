@@ -20,7 +20,7 @@ import java.io.IOException;
 @Component
 public class CaptchaT
 {
-    final static String CACHE_PRE = "edu_captchat:";
+    final static String CACHE_PRE = "test_edu_captchat:";
 
     @Resource
     private RedisT redis;

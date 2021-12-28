@@ -16,7 +16,7 @@ import java.util.Map;
 @Component
 public class MailService
 {
-    final static String CACHE_PRE = "edu_email:";
+    final static String CACHE_PRE = "test_edu_email:";
 
     @Resource
     private JavaMail emailTool;

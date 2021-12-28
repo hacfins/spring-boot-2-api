@@ -110,7 +110,7 @@ spring:
     timeout: 6000ms
 
     key:
-      api-list: 'edu_auth:admin:apilist:'
+      api-list: 'test_edu_auth:admin:apilist:'
     expire:
       # 24小时
       common: 86400
