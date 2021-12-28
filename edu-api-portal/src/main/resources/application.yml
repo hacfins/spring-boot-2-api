@@ -64,7 +64,7 @@ server:
 
 spring:
   main:
-    allow-circular-references: true
+    allow-circular-references: false
 
   application:
     name: edu-portal
