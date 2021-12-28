@@ -96,11 +96,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-websocket</artifactId>
         </dependency>
-        <!--spring template-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
-        </dependency>
         <!--validation-->
         <!--SpringBoot 2.3版本默认移除了校验功能，如果想要开启的话需要添加如下依赖-->
         <dependency>

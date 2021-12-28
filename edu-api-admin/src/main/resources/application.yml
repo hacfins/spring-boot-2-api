@@ -129,13 +129,6 @@ spring:
       #nodes: 127.0.0.1:6381,127.0.0.1:6382,127.0.0.1:6383,127.0.0.1:6384,127.0.0.1:6385,127.0.0.1:6386
       #max-redirects: 2  # 最大重定向次数
 
-  thymeleaf:
-    # 默认值HTML5是一个很严格的检查
-    mode: HTML
-    encoding: UTF-8
-    # 开发时关闭缓存,不然没法看到实时页面
-    cache: false
-
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
