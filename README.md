@@ -174,8 +174,13 @@ spring-boot-2-api 可用于后端单应用及多应用的 **API 接口开发框�
 
 > 更新的最佳实践原则是：如果需要使用模型事件，那么就先查询后更新
 
+
+
 ## 依赖环境安装
-需要安装 MySQL、Redis，并导入 doc/sql/ 目录下的 SQL 文件到MySQL数据中
+
+需要安装 MySQL、Redis，并导入 doc/sql/ 目录下的 SQL 文件到 MySQL 数据库
+
+
 
 ## 打包与运行
 
@@ -188,6 +193,8 @@ mvnw clean package  -Dmaven.test.skip=true
 
 
 ### 运行
+
+> 也可直接基于 IDEA 的调试模式运行
 
 控制台运行 jar 包
 ```shell
@@ -213,6 +220,30 @@ java -jar xxx.jar --spring.profiles.active=dev
 ```shell
 java -Xms10m -Xmx80m -jar xxx.jar &
 ```
+
+
+
+### 接口测试
+
+使用 Postman 工具测试接口
+
+#### 登录
+
+portal 应用程序
+
+ `192.168.123.100:8001/portal/common/pwd/login` 采用 `POST` 请求，传入 JSON 格式的 `user_name: admin` 与 `pwd: 123456a` 
+
+![image-20211228100142616](https://img-note.langyastudio.com/202112281001734.png?x-oss-process=style/watermark)
+
+#### 登录日志
+
+admin 应用程序
+
+`192.168.123.100:8002/admin/monitor/log/login` 采用 `GET` 请求，在 Header 中传入 `Authorization` 认证授权参数 `Edu eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImNyZWF0ZWQiOjE2NDA2NTUxNTY1MTEsImV4cCI6MTY0MTI1OTk1Nn0.Vh0sV3AnXUywqW7pw3zArL-xO720HE2oIg-vsaI12roGIpVHrS4H6WJQ2tBnUQHdo6I0INihhBuzKPY9gano1g`
+
+由上述返回的 token 与 token_head 拼接而成
+
+![image-20211228100822572](https://img-note.langyastudio.com/202112281008670.png?x-oss-process=style/watermark)
 
 
 
