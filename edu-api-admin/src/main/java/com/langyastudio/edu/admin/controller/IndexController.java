@@ -35,8 +35,8 @@ public class IndexController
         return ResultInfo.data(Map.of("name", "admin api",
                                       "version", serviceVersion,
                                       "time", serviceBuildDate,
-                                      "company", "北京华科飞扬科技股份公司",
-                                      "official", "http://bogo365.net",
+                                      "company", "郎涯工作室",
+                                      "official", "https://langyastudio.blog.csdn.net/",
                                       "maintainer", "langyastudio  「15589933912」"));
     }
 }
