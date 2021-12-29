@@ -178,7 +178,7 @@ spring-boot-2-api 可用于后端单应用及多应用的 **API 接口开发框�
 
 ## 依赖环境安装
 
-需要安装 MySQL、Redis，并导入 doc/sql/ 目录下的 SQL 文件到 MySQL 数据库
+**需要安装 MySQL、Redis，并导入 doc/sql/ 目录下的 SQL 文件到 MySQL 数据库**
 
 
 
@@ -248,8 +248,7 @@ admin 应用程序
 
 
 ### docker 打包与发布
-需要修改 edu-api-portal/pom.xml 与 edu-api-admin/pom.xml 文件
-安装时，可以参考 doc/docker/volume/ 目录下的文件
+需要修改 edu-api-portal/pom.xml 与 edu-api-admin/pom.xml 文件。安装时，可以参考 doc/docker/volume/ 目录下的文件
 
 [docker 打包参考资料](https://mp.weixin.qq.com/s/3X6vVdWmjmWCyiLm35jpVw)
 
