@@ -5,7 +5,7 @@ spring-boot-2-api framework and integrated a lot of third-party sdk features
 
 ## 简介
 
-spring-boot-2-api 可用于后端单应用及多应用的 **API 接口开发框架**，它基于 [SpringBoot2](https://spring.io/projects/spring-boot) + [MyBatis3](http://www.mybatis.org/mybatis-3/zh/index.html) + [Spring Security5](https://spring.io/projects/spring-security) 实现。它使用了最新的后台技术栈，相信不管你的需求是什么，本项目都能帮助到你。
+spring-boot-2-api 可用于后端单应用及多应用的 **API 接口开发框架**，它基于 [SpringBoot2](https://spring.io/projects/spring-boot) + [MyBatis3](http://www.mybatis.org/mybatis-3/zh/index.html) + [Spring Security5](https://spring.io/projects/spring-security) + [JWT](  https://github.com/jwtk/jjwt[) 实现。它使用了最新的后台技术栈，相信不管你的需求是什么，本项目都能帮助到你。
 
 | 技术                 | 说明                | 官网                                                  |
 | -------------------- | ------------------- | ----------------------------------------------------- |
