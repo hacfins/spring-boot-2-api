@@ -183,8 +183,10 @@ mysql -uroot -p --default-character-set=utf8
 #输入密码 
 #testMysql
 
-#创建远程访问用户 hacfin，密码为 H123456a
-#grant all privileges on *.* to 'hacfin' @'%' identified by 'H123456a';
+#创建远程访问用户 test，密码为 testMysql
+#CREATE USER 'test'@'%' IDENTIFIED BY 'testMysql';
+GRANT ALL PRIVILEGES ON *.* TO 'test'@'%' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
 
 #为了客户端的兼容性，更新一下用户的密码
 #todo：未来可考虑不这样处理
