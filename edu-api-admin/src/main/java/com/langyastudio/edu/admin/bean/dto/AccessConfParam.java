@@ -6,13 +6,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 /**
  * 访问配置参数
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AccessConfParam
+public class AccessConfParam implements Serializable
 {
     /**
      * 注册

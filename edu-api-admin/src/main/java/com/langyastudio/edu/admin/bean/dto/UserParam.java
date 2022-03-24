@@ -4,13 +4,14 @@ import com.langyastudio.edu.common.anno.InValue;
 import lombok.Data;
 
 import javax.validation.constraints.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
  * 用户传入参数
  */
 @Data
-public class UserParam
+public class UserParam implements Serializable
 {
     /**
      * 用户名

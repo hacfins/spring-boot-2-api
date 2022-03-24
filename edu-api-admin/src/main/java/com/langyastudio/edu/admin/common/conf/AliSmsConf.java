@@ -3,6 +3,7 @@ package com.langyastudio.edu.admin.common.conf;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
+import java.io.Serializable;
 import java.util.Map;
 
 /**
@@ -10,7 +11,7 @@ import java.util.Map;
  */
 @Data
 @ConfigurationProperties(prefix = "aliyun.sms")
-public class AliSmsConf
+public class AliSmsConf implements Serializable
 {
     private String accessKey;
     private String accessSecret;

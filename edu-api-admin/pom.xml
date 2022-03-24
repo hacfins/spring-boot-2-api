@@ -31,6 +31,91 @@
 
     <build>
         <plugins>
+            <!--proguard混淆插件-->
+            <plugin>
+                <groupId>com.github.wvengen</groupId>
+                <artifactId>proguard-maven-plugin</artifactId>
+                <version>${proguard-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <!--打包的时候开始混淆-->
+                        <phase>package</phase>
+                        <goals>
+                            <goal>proguard</goal>
+                        </goals>
+                    </execution>
+                </executions>
+
+                <configuration>
+                    <proguardVersion>${proguard.version}</proguardVersion>
+                    <injar>${project.build.finalName}.jar</injar>
+                    <!--输出的jar-->
+                    <outjar>${project.build.finalName}.jar</outjar>
+                    <!--是否混淆-->
+                    <obfuscate>true</obfuscate>
+                    <proguardInclude>${basedir}/proguard.cfg</proguardInclude>
+
+                    <options>
+                        <!--默认开启，不做收缩（删除注释、未被引用代码）-->
+                        <option>-dontshrink</option>
+                        <!--默认是开启的，这里关闭字节码级别的优化-->
+                        <option>-dontoptimize</option>
+                        <!--对于类成员的命名的混淆采取唯一策略-->
+                        <option>-useuniqueclassmembernames</option>
+                        <!--混淆时不生成大小写混合的类名，默认是可以大小写混合-->
+                        <option>-dontusemixedcaseclassnames </option>
+                        <!--混淆类名之后，对使用Class.forName('className')之类的地方进行相应替代-->
+                        <option>-adaptclassstrings</option>
+
+                        <!--对异常、注解信息在runtime予以保留，不然影响springboot启动-->
+                        <option>-keepattributes
+                            Exceptions,InnerClasses,Signature,Deprecated,SourceFile,LineNumberTable,*Annotation*,EnclosingMethod
+                        </option>
+
+                        <!--此选项将保存接口中的所有原始名称（不混淆）-->
+                        <option>-keepnames interface ** { *; }</option>
+                        <!--此选项将保存所有软件包中的所有原始接口文件（不进行混淆）-->
+                        <!--<option>-keep interface * extends * { *; }</option>-->
+                        <!--此选项将保留所有原始方法参数,controller如果参数也混淆会导致传参映射不上  -->
+                        <option>-keepparameternames</option>
+
+                        <!--保留枚举成员及方法-->
+                        <option>-keepclassmembers enum * { *; }</option>
+
+                        <!--不混淆所有类,保存原始定义的注释-->
+                        <!--<option>-keepclassmembers class * {
+                            @org.springframework.context.annotation.Bean *;
+                            @org.springframework.beans.factory.annotation.Autowired *;
+                            @org.springframework.beans.factory.annotation.Value *;
+                            @org.springframework.stereotype.Service *;
+                            @org.springframework.stereotype.Component *;
+                            }
+                        </option>-->
+
+                        <!--忽略warn消息-->
+                        <option>-ignorewarnings</option>
+                        <!--忽略note消息-->
+                        <option>-dontnote</option>
+                    </options>
+                    <!--java 11-->
+                    <libs>
+                        <lib>${java.home}/jmods/</lib>
+                    </libs>
+                    <!--java 8-->
+                    <!-- <libs>
+                         <lib>${java.home}/lib/rt.jar</lib>
+                         <lib>${java.home}/lib/jsse.jar</lib>
+                     </libs>-->
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.guardsquare</groupId>
+                        <artifactId>proguard-base</artifactId>
+                        <version>${proguard.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>

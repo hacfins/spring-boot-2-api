@@ -3,6 +3,8 @@ package com.langyastudio.edu.admin.common.conf;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
+import java.io.Serializable;
+
 /**
  * 资源配置
  *
@@ -10,7 +12,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  */
 @Data
 @ConfigurationProperties(prefix = "langyastudio.disk.pms")
-public class PmsConf
+public class PmsConf implements Serializable
 {
     /**
      * 根目录

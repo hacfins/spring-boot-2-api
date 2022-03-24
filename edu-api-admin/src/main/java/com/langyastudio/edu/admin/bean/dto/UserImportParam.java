@@ -3,13 +3,15 @@ package com.langyastudio.edu.admin.bean.dto;
 import com.alibaba.excel.annotation.ExcelProperty;
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * 基础数据类
  *
  * @author Jiaju Zhuang
  **/
 @Data
-public class UserImportParam
+public class UserImportParam implements Serializable
 {
     /**
      * 用户名
