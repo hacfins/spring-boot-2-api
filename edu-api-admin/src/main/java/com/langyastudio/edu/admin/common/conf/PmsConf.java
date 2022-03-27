@@ -1,6 +1,8 @@
 package com.langyastudio.edu.admin.common.conf;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.io.Serializable;
@@ -11,6 +13,8 @@ import java.io.Serializable;
  * @author jiangjiaxiong
  */
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @ConfigurationProperties(prefix = "langyastudio.disk.pms")
 public class PmsConf implements Serializable
 {

@@ -1,7 +1,9 @@
 package com.langyastudio.edu.admin.bean.dto;
 
 import com.alibaba.excel.annotation.ExcelProperty;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
@@ -11,6 +13,8 @@ import java.io.Serializable;
  * @author Jiaju Zhuang
  **/
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserImportParam implements Serializable
 {
     /**

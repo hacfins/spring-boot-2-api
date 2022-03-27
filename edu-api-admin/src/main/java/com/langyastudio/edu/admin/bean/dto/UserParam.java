@@ -1,7 +1,9 @@
 package com.langyastudio.edu.admin.bean.dto;
 
 import com.langyastudio.edu.common.anno.InValue;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.*;
 import java.io.Serializable;
@@ -11,6 +13,8 @@ import java.time.LocalDate;
  * 用户传入参数
  */
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserParam implements Serializable
 {
     /**

@@ -1,6 +1,8 @@
 package com.langyastudio.edu.admin.common.conf;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.io.Serializable;
@@ -10,6 +12,8 @@ import java.util.Map;
  * yml 配置文件-aliyun-sms
  */
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @ConfigurationProperties(prefix = "aliyun.sms")
 public class AliSmsConf implements Serializable
 {
